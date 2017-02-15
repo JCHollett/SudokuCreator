@@ -339,6 +339,27 @@ namespace SudokuCreator {
             foreach( var cell in Adj ) this.Adjacency.Add( cell );
         }
 
+        public static bool operator ==( Cell A , Cell B ) {
+            return A.Coordinate == B.Coordinate;
+        }
+
+        public static bool operator !=( Cell A , Cell B ) {
+            return !( A == B );
+        }
+
+        public override Boolean Equals( Object obj ) {
+            if( obj == null ) {
+                return false;
+            } else {
+                Cell other = obj as Cell;
+                return this == other;
+            }
+        }
+
+        public override Int32 GetHashCode() {
+            return base.GetHashCode();
+        }
+
         public override string ToString() {
             return string.Format( "[{0}->{1}]" , this.Coordinate , this.Actual );
         }
